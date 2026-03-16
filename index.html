@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinyl Collection Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Vinyl Collection</h1>
+        <input type="file" id="csvUpload" accept="text/csv">
+        <button id="searchButton">Search</button>
+        <input type="text" id="searchInput" placeholder="Search by album name..."></input>
+    </header>
+
+    <main>
+        <table id="albumTable">
+            <thead>
+                <tr>
+                    <th>Artwork</th>
+                    <th>Album Name</th>
+                    <th>Artist</th>
+                    <th>Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Album entries will be added here -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
