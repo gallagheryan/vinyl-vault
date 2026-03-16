@@ -3,82 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinyl Vault - Record Collection Manager</title>
+    <title>Vinyl Vault</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <div class="header-content">
-                <h1>🎵 Vinyl Vault</h1>
-                <p>Your Digital Record Collection</p>
-            </div>
+            <h1>🎵 Vinyl Vault</h1>
+            <p>Your Digital Record Collection</p>
         </header>
 
         <section class="upload-section">
             <div class="upload-card">
                 <h2>Import Your Collection</h2>
                 <div class="upload-area" id="uploadArea">
-                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="17 8 12 3 7 8"></polyline>
-                        <line x1="12" y1="3" x2="12" y2="15"></line>
-                    </svg>
-                    <p>Drag and drop your CSV here or click to browse</p>
-                    <input type="file" id="csvUpload" accept=".csv" hidden>
+                    <p>📤 Click here or drag & drop CSV</p>
+                    <input type="file" id="csvUpload" accept=".csv">
                 </div>
-                <p class="help-text">Format: Artist, Album, Year, Genre, Sub-Genre, Label, Catalog #, Format, RPM, Weight, Collections, Notes, image-url</p>
+                <p class="help-text">CSV Format: Artist, Album, Year, Genre, Sub-Genre, Label, Catalog #, Format, RPM, Weight, Collections, Notes, image-url</p>
             </div>
         </section>
 
-        <section class="controls-section">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 Search albums...">
-            </div>
-            <div class="filters">
-                <select id="genreFilter"><option value="">Genre</option></select>
-                <select id="formatFilter"><option value="">Format</option></select>
-                <select id="collectionFilter"><option value="">Collection</option></select>
-            </div>
-        </section>
-
-        <div class="stats">
-            <div class="stat"><span id="totalCount">0</span><p>Total Albums</p></div>
-            <div class="stat"><span id="displayCount">0</span><p>Shown</p></div>
+        <div class="controls">
+            <input type="text" id="search" placeholder="🔍 Search...">
+            <select id="genre"><option value="">Genre</option></select>
+            <select id="format"><option value="">Format</option></select>
         </div>
 
-        <section class="gallery">
-            <div id="recordsGrid" class="records-grid">
-                <div class="empty">📀 Upload a CSV to get started</div>
-            </div>
-        </section>
+        <div class="stats">
+            <div><span id="total">0</span> Total</div>
+            <div><span id="shown">0</span> Shown</div>
+        </div>
+
+        <div id="grid" class="grid">
+            <div class="empty">📀 Upload a CSV to start</div>
+        </div>
     </div>
 
     <div id="modal" class="modal">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h2>Edit Record</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <form id="editForm">
-                <div class="form-grid">
-                    <input type="text" id="f-artist" placeholder="Artist" required>
-                    <input type="text" id="f-album" placeholder="Album" required>
-                    <input type="text" id="f-year" placeholder="Year">
-                    <input type="text" id="f-genre" placeholder="Genre">
-                    <input type="text" id="f-subgenre" placeholder="Sub-Genre">
-                    <input type="text" id="f-format" placeholder="Format">
-                    <input type="text" id="f-label" placeholder="Label">
-                    <input type="text" id="f-catalog" placeholder="Catalog #">
-                    <input type="text" id="f-rpm" placeholder="RPM">
-                    <input type="text" id="f-weight" placeholder="Weight">
-                    <input type="text" id="f-collections" placeholder="Collections (;-separated)">
-                    <input type="text" id="f-imageurl" placeholder="Image URL">
-                </div>
-                <textarea id="f-notes" placeholder="Notes" rows="3"></textarea>
-                <div class="modal-buttons">
-                    <button type="button" class="btn-cancel">Cancel</button>
-                    <button type="submit" class="btn-save">Save</button>
+        <div class="box">
+            <h2>Edit Record</h2>
+            <form id="form">
+                <input type="text" id="in-artist" placeholder="Artist">
+                <input type="text" id="in-album" placeholder="Album">
+                <input type="text" id="in-year" placeholder="Year">
+                <input type="text" id="in-genre" placeholder="Genre">
+                <input type="text" id="in-format" placeholder="Format">
+                <input type="text" id="in-collections" placeholder="Collections">
+                <input type="text" id="in-image" placeholder="Image URL">
+                <textarea id="in-notes" placeholder="Notes"></textarea>
+                <div class="buttons">
+                    <button type="button" onclick="closeModal()">Cancel</button>
+                    <button type="submit">Save</button>
                 </div>
             </form>
         </div>
